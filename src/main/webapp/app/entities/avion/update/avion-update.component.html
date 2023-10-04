@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-avion-heading" data-cy="AvionCreateUpdateHeading" jhiTranslate="aeroclubspassionApp.avion.home.createOrEditLabel">
+        Create or edit a Avion
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.avion.marque" for="field_marque">Marque</label>
+          <input type="text" class="form-control" name="marque" id="field_marque" data-cy="marque" formControlName="marque" />
+          <div *ngIf="editForm.get('marque')!.invalid && (editForm.get('marque')!.dirty || editForm.get('marque')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('marque')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.avion.type" for="field_type">Type</label>
+          <input type="text" class="form-control" name="type" id="field_type" data-cy="type" formControlName="type" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.avion.moteur" for="field_moteur">Moteur</label>
+          <input type="text" class="form-control" name="moteur" id="field_moteur" data-cy="moteur" formControlName="moteur" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.avion.puissance" for="field_puissance">Puissance</label>
+          <input type="number" class="form-control" name="puissance" id="field_puissance" data-cy="puissance" formControlName="puissance" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.avion.place" for="field_place">Place</label>
+          <input type="number" class="form-control" name="place" id="field_place" data-cy="place" formControlName="place" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.avion.autonomie" for="field_autonomie">Autonomie</label>
+          <input type="text" class="form-control" name="autonomie" id="field_autonomie" data-cy="autonomie" formControlName="autonomie" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.avion.usage" for="field_usage">Usage</label>
+          <input type="text" class="form-control" name="usage" id="field_usage" data-cy="usage" formControlName="usage" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.avion.heures" for="field_heures">Heures</label>
+          <input type="text" class="form-control" name="heures" id="field_heures" data-cy="heures" formControlName="heures" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.avion.aeroclub" for="field_aeroclub">Aeroclub</label>
+          <select class="form-control" id="field_aeroclub" data-cy="aeroclub" name="aeroclub" formControlName="aeroclub">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="aeroclubOption.id === editForm.get('aeroclub')!.value?.id ? editForm.get('aeroclub')!.value : aeroclubOption"
+              *ngFor="let aeroclubOption of aeroclubsSharedCollection; trackBy: trackAeroclubById"
+            >
+              {{ aeroclubOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

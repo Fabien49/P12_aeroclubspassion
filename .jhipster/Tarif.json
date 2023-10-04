@@ -1,0 +1,36 @@
+{
+  "name": "Tarif",
+  "fields": [
+    {
+      "fieldName": "taxeAtterrissage",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "taxeParking",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "carburant",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "aeroclub",
+      "otherEntityRelationshipName": "tarif",
+      "relationshipName": "aeroclub",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "tarif",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20230903203827"
+}

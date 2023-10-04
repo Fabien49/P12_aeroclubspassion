@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="reservation">
+      <h2 data-cy="reservationDetailsHeading"><span jhiTranslate="aeroclubspassionApp.reservation.detail.title">Reservation</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ reservation.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.reservation.dateEmprunt">Date Emprunt</span></dt>
+        <dd>
+          <span>{{ reservation.dateEmprunt | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.reservation.dateRetour">Date Retour</span></dt>
+        <dd>
+          <span>{{ reservation.dateRetour | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.reservation.avion">Avion</span></dt>
+        <dd>
+          <div *ngIf="reservation.avion">
+            <a [routerLink]="['/avion', reservation.avion?.id, 'view']">{{ reservation.avion?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/reservation', reservation.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

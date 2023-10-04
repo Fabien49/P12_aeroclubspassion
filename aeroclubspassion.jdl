@@ -1,0 +1,78 @@
+
+entity Aeroclub {
+	oaci String required
+    name String required
+    type String required
+    phoneNumber String required
+    mail String required
+    adresse String required
+    codePostal String required
+    commune String required
+    
+}
+
+entity Tarif {
+	taxeAtterrissage Double
+    taxeParking Double
+    carburant Double
+}
+
+entity Avion {
+	marque String required
+    type String
+    moteur String
+    puissance Integer
+    place Integer
+    autonomie Duration
+    usage String
+    heures Duration
+}
+
+entity Reservation {
+	dateEmprunt ZonedDateTime
+    dateRetour ZonedDateTime    
+}
+
+entity Revision {
+	niveaux Boolean
+    pression Boolean
+    carroserie Boolean
+    date ZonedDateTime
+}
+
+entity Atelier {
+	compteurChgtMoteur Integer
+    compteurCarrosserie Integer
+    compteurHelisse Integer
+    date ZonedDateTime
+}
+
+relationship OneToOne {
+	Tarif{aeroclub} to Aeroclub
+    Revision{avion} to Avion
+    Reservation{avion} to Avion
+}
+
+relationship ManyToOne {
+	Avion{aeroclub} to Aeroclub
+    Atelier{avion} to Avion
+}
+
+
+
+
+
+
+// Set pagination options
+paginate Aeroclub with pagination
+paginate Avion with pagination
+paginate Reservation with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

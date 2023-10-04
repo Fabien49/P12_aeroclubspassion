@@ -1,0 +1,28 @@
+{
+  "aeroclubspassionApp": {
+    "revision": {
+      "home": {
+        "title": "Revisions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Revision",
+        "createOrEditLabel": "Create or edit a Revision",
+        "notFound": "No Revisions found"
+      },
+      "created": "A new Revision is created with identifier {{ param }}",
+      "updated": "A Revision is updated with identifier {{ param }}",
+      "deleted": "A Revision is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Revision {{ id }}?"
+      },
+      "detail": {
+        "title": "Revision"
+      },
+      "id": "ID",
+      "niveaux": "Niveaux",
+      "pression": "Pression",
+      "carroserie": "Carroserie",
+      "date": "Date",
+      "avion": "Avion"
+    }
+  }
+}

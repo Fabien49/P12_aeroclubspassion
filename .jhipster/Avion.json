@@ -1,0 +1,56 @@
+{
+  "name": "Avion",
+  "fields": [
+    {
+      "fieldName": "marque",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "moteur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "puissance",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "place",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "autonomie",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "usage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "heures",
+      "fieldType": "Duration"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "aeroclub",
+      "otherEntityRelationshipName": "avion",
+      "relationshipName": "aeroclub"
+    }
+  ],
+  "entityTableName": "avion",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20230913151020"
+}

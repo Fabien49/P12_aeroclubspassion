@@ -1,0 +1,104 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-atelier-heading" data-cy="AtelierCreateUpdateHeading" jhiTranslate="aeroclubspassionApp.atelier.home.createOrEditLabel">
+        Create or edit a Atelier
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.atelier.compteurChgtMoteur" for="field_compteurChgtMoteur"
+            >Compteur Chgt Moteur</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="compteurChgtMoteur"
+            id="field_compteurChgtMoteur"
+            data-cy="compteurChgtMoteur"
+            formControlName="compteurChgtMoteur"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.atelier.compteurCarrosserie" for="field_compteurCarrosserie"
+            >Compteur Carrosserie</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="compteurCarrosserie"
+            id="field_compteurCarrosserie"
+            data-cy="compteurCarrosserie"
+            formControlName="compteurCarrosserie"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.atelier.compteurHelisse" for="field_compteurHelisse"
+            >Compteur Helisse</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="compteurHelisse"
+            id="field_compteurHelisse"
+            data-cy="compteurHelisse"
+            formControlName="compteurHelisse"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.atelier.date" for="field_date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.atelier.avion" for="field_avion">Avion</label>
+          <select class="form-control" id="field_avion" data-cy="avion" name="avion" formControlName="avion">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="avionOption.id === editForm.get('avion')!.value?.id ? editForm.get('avion')!.value : avionOption"
+              *ngFor="let avionOption of avionsSharedCollection; trackBy: trackAvionById"
+            >
+              {{ avionOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<div>
+  <h2 id="page-heading" data-cy="TarifHeading">
+    <span jhiTranslate="aeroclubspassionApp.tarif.home.title">Tarifs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="aeroclubspassionApp.tarif.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-tarif"
+        [routerLink]="['/tarif/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="aeroclubspassionApp.tarif.home.createLabel"> Create a new Tarif </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="tarifs?.length === 0">
+    <span jhiTranslate="aeroclubspassionApp.tarif.home.notFound">No tarifs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="tarifs && tarifs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="aeroclubspassionApp.tarif.taxeAtterrissage">Taxe Atterrissage</span></th>
+          <th scope="col"><span jhiTranslate="aeroclubspassionApp.tarif.taxeParking">Taxe Parking</span></th>
+          <th scope="col"><span jhiTranslate="aeroclubspassionApp.tarif.carburant">Carburant</span></th>
+          <th scope="col"><span jhiTranslate="aeroclubspassionApp.tarif.aeroclub">Aeroclub</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tarif of tarifs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/tarif', tarif.id, 'view']">{{ tarif.id }}</a>
+          </td>
+          <td>{{ tarif.taxeAtterrissage }}</td>
+          <td>{{ tarif.taxeParking }}</td>
+          <td>{{ tarif.carburant }}</td>
+          <td>
+            <div *ngIf="tarif.aeroclub">
+              <a [routerLink]="['/aeroclub', tarif.aeroclub?.id, 'view']">{{ tarif.aeroclub?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/tarif', tarif.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/tarif', tarif.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(tarif)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

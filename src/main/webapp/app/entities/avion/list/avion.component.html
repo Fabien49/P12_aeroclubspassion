@@ -1,0 +1,124 @@
+<div>
+  <h2 id="page-heading" data-cy="AvionHeading">
+    <span jhiTranslate="aeroclubspassionApp.avion.home.title">Avions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="aeroclubspassionApp.avion.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-avion"
+        [routerLink]="['/avion/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="aeroclubspassionApp.avion.home.createLabel"> Create a new Avion </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="avions?.length === 0">
+    <span jhiTranslate="aeroclubspassionApp.avion.home.notFound">No avions found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="avions && avions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="marque">
+            <span jhiTranslate="aeroclubspassionApp.avion.marque">Marque</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="type">
+            <span jhiTranslate="aeroclubspassionApp.avion.type">Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="moteur">
+            <span jhiTranslate="aeroclubspassionApp.avion.moteur">Moteur</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="puissance">
+            <span jhiTranslate="aeroclubspassionApp.avion.puissance">Puissance</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="place">
+            <span jhiTranslate="aeroclubspassionApp.avion.place">Place</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="autonomie">
+            <span jhiTranslate="aeroclubspassionApp.avion.autonomie">Autonomie</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="usage">
+            <span jhiTranslate="aeroclubspassionApp.avion.usage">Usage</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="heures">
+            <span jhiTranslate="aeroclubspassionApp.avion.heures">Heures</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="aeroclub.id">
+            <span jhiTranslate="aeroclubspassionApp.avion.aeroclub">Aeroclub</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let avion of avions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/avion', avion.id, 'view']">{{ avion.id }}</a>
+          </td>
+          <td>{{ avion.marque }}</td>
+          <td>{{ avion.type }}</td>
+          <td>{{ avion.moteur }}</td>
+          <td>{{ avion.puissance }}</td>
+          <td>{{ avion.place }}</td>
+          <td title="{{ avion.autonomie }}">{{ avion.autonomie | duration }}</td>
+          <td>{{ avion.usage }}</td>
+          <td title="{{ avion.heures }}">{{ avion.heures | duration }}</td>
+          <td>
+            <div *ngIf="avion.aeroclub">
+              <a [routerLink]="['/aeroclub', avion.aeroclub?.id, 'view']">{{ avion.aeroclub?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/avion', avion.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/avion', avion.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(avion)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="avions && avions.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

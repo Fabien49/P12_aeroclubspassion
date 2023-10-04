@@ -1,0 +1,32 @@
+{
+  "aeroclubspassionApp": {
+    "avion": {
+      "home": {
+        "title": "Avions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Avion",
+        "createOrEditLabel": "Create or edit a Avion",
+        "notFound": "No Avions found"
+      },
+      "created": "A new Avion is created with identifier {{ param }}",
+      "updated": "A Avion is updated with identifier {{ param }}",
+      "deleted": "A Avion is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Avion {{ id }}?"
+      },
+      "detail": {
+        "title": "Avion"
+      },
+      "id": "ID",
+      "marque": "Marque",
+      "type": "Type",
+      "moteur": "Moteur",
+      "puissance": "Puissance",
+      "place": "Place",
+      "autonomie": "Autonomie",
+      "usage": "Usage",
+      "heures": "Heures",
+      "aeroclub": "Aeroclub"
+    }
+  }
+}

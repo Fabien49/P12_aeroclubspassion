@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tarif">
+      <h2 data-cy="tarifDetailsHeading"><span jhiTranslate="aeroclubspassionApp.tarif.detail.title">Tarif</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tarif.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.tarif.taxeAtterrissage">Taxe Atterrissage</span></dt>
+        <dd>
+          <span>{{ tarif.taxeAtterrissage }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.tarif.taxeParking">Taxe Parking</span></dt>
+        <dd>
+          <span>{{ tarif.taxeParking }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.tarif.carburant">Carburant</span></dt>
+        <dd>
+          <span>{{ tarif.carburant }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.tarif.aeroclub">Aeroclub</span></dt>
+        <dd>
+          <div *ngIf="tarif.aeroclub">
+            <a [routerLink]="['/aeroclub', tarif.aeroclub?.id, 'view']">{{ tarif.aeroclub?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tarif', tarif.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

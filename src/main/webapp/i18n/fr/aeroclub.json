@@ -1,0 +1,31 @@
+{
+  "aeroclubspassionApp": {
+    "aeroclub": {
+      "home": {
+        "title": "Aeroclubs",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Aeroclub",
+        "createOrEditLabel": "Créer ou éditer un Aeroclub",
+        "notFound": "Aucun Aeroclub trouvé"
+      },
+      "created": "Un nouveau Aeroclub a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Aeroclub avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Aeroclub avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Aeroclub {{ id }} ?"
+      },
+      "detail": {
+        "title": "Aeroclub"
+      },
+      "id": "ID",
+      "oaci": "Oaci",
+      "name": "Name",
+      "type": "Type",
+      "phoneNumber": "Phone Number",
+      "mail": "Mail",
+      "adresse": "Adresse",
+      "codePostal": "Code Postal",
+      "commune": "Commune"
+    }
+  }
+}

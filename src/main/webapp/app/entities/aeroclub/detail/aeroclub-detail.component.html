@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="aeroclub">
+      <h2 data-cy="aeroclubDetailsHeading"><span jhiTranslate="aeroclubspassionApp.aeroclub.detail.title">Aeroclub</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ aeroclub.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.aeroclub.oaci">Oaci</span></dt>
+        <dd>
+          <span>{{ aeroclub.oaci }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.aeroclub.name">Name</span></dt>
+        <dd>
+          <span>{{ aeroclub.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.aeroclub.type">Type</span></dt>
+        <dd>
+          <span>{{ aeroclub.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.aeroclub.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ aeroclub.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.aeroclub.mail">Mail</span></dt>
+        <dd>
+          <span>{{ aeroclub.mail }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.aeroclub.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ aeroclub.adresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.aeroclub.codePostal">Code Postal</span></dt>
+        <dd>
+          <span>{{ aeroclub.codePostal }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.aeroclub.commune">Commune</span></dt>
+        <dd>
+          <span>{{ aeroclub.commune }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/aeroclub', aeroclub.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="revision">
+      <h2 data-cy="revisionDetailsHeading"><span jhiTranslate="aeroclubspassionApp.revision.detail.title">Revision</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ revision.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.revision.niveaux">Niveaux</span></dt>
+        <dd>
+          <span>{{ revision.niveaux }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.revision.pression">Pression</span></dt>
+        <dd>
+          <span>{{ revision.pression }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.revision.carroserie">Carroserie</span></dt>
+        <dd>
+          <span>{{ revision.carroserie }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.revision.date">Date</span></dt>
+        <dd>
+          <span>{{ revision.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="aeroclubspassionApp.revision.avion">Avion</span></dt>
+        <dd>
+          <div *ngIf="revision.avion">
+            <a [routerLink]="['/avion', revision.avion?.id, 'view']">{{ revision.avion?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/revision', revision.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-revision-heading"
+        data-cy="RevisionCreateUpdateHeading"
+        jhiTranslate="aeroclubspassionApp.revision.home.createOrEditLabel"
+      >
+        Create or edit a Revision
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.revision.niveaux" for="field_niveaux">Niveaux</label>
+          <input type="checkbox" class="form-check" name="niveaux" id="field_niveaux" data-cy="niveaux" formControlName="niveaux" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.revision.pression" for="field_pression">Pression</label>
+          <input type="checkbox" class="form-check" name="pression" id="field_pression" data-cy="pression" formControlName="pression" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.revision.carroserie" for="field_carroserie">Carroserie</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="carroserie"
+            id="field_carroserie"
+            data-cy="carroserie"
+            formControlName="carroserie"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.revision.date" for="field_date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.revision.avion" for="field_avion">Avion</label>
+          <select class="form-control" id="field_avion" data-cy="avion" name="avion" formControlName="avion">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="avionOption.id === editForm.get('avion')!.value?.id ? editForm.get('avion')!.value : avionOption"
+              *ngFor="let avionOption of avionsCollection; trackBy: trackAvionById"
+            >
+              {{ avionOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
