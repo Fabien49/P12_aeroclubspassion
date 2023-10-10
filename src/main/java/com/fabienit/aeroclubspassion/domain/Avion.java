@@ -47,11 +47,13 @@ public class Avion implements Serializable {
     @Column(name = "heures")
     private Duration heures;
 
+
     @ManyToOne
     private Aeroclub aeroclub;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
-
+    @Column(name = "image")
+    private String image;
     public Long getId() {
         return this.id;
     }
@@ -169,6 +171,19 @@ public class Avion implements Serializable {
         this.heures = heures;
     }
 
+    public String getImage() {
+        return this.image;
+    }
+
+    public Avion image(String image) {
+        this.setImage(image);
+        return this;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Aeroclub getAeroclub() {
         return this.aeroclub;
     }
@@ -214,6 +229,7 @@ public class Avion implements Serializable {
             ", autonomie='" + getAutonomie() + "'" +
             ", usage='" + getUsage() + "'" +
             ", heures='" + getHeures() + "'" +
+            ", image='" + getImage() + "'" +
             "}";
     }
 }

@@ -59,6 +59,11 @@
         </div>
 
         <div class="form-group">
+          <label class="form-control-label" jhiTranslate="aeroclubspassionApp.avion.image" for="field_image">Image</label>
+          <input type="text" class="form-control" name="image" id="field_image" data-cy="image" formControlName="image" />
+        </div>
+
+        <div class="form-group">
           <label class="form-control-label" jhiTranslate="aeroclubspassionApp.avion.aeroclub" for="field_aeroclub">Aeroclub</label>
           <select class="form-control" id="field_aeroclub" data-cy="aeroclub" name="aeroclub" formControlName="aeroclub">
             <option [ngValue]="null"></option>

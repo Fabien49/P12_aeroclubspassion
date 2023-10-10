@@ -63,6 +63,9 @@ public class AvionServiceImpl implements AvionService {
                 if (avion.getHeures() != null) {
                     existingAvion.setHeures(avion.getHeures());
                 }
+                if (avion.getImage() != null) {
+                    existingAvion.setImage(avion.getImage());
+                }
 
                 return existingAvion;
             })

@@ -29,6 +29,7 @@ describe('Avion Service', () => {
       autonomie: 'PT1S',
       usage: 'AAAAAAA',
       heures: 'PT1S',
+      image: 'AAAAAAA',
     };
   });
 
@@ -72,6 +73,7 @@ describe('Avion Service', () => {
           autonomie: 'BBBBBB',
           usage: 'BBBBBB',
           heures: 'BBBBBB',
+          image: 'BBBBBB',
         },
         elemDefault
       );
@@ -118,6 +120,7 @@ describe('Avion Service', () => {
           autonomie: 'BBBBBB',
           usage: 'BBBBBB',
           heures: 'BBBBBB',
+          image: 'BBBBBB',
         },
         elemDefault
       );
@@ -169,7 +172,7 @@ describe('Avion Service', () => {
       });
 
       it('should add only unique Avion to an array', () => {
-        const avionArray: IAvion[] = [{ id: 123 }, { id: 456 }, { id: 14905 }];
+        const avionArray: IAvion[] = [{ id: 123 }, { id: 456 }, { id: 37658 }];
         const avionCollection: IAvion[] = [{ id: 123 }];
         expectedResult = service.addAvionToCollectionIfMissing(avionCollection, ...avionArray);
         expect(expectedResult).toHaveLength(3);

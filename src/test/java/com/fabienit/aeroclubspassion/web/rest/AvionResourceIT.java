@@ -54,6 +54,9 @@ class AvionResourceIT {
     private static final Duration DEFAULT_HEURES = Duration.ofHours(6);
     private static final Duration UPDATED_HEURES = Duration.ofHours(12);
 
+    private static final String DEFAULT_IMAGE = "AAAAAAAAAA";
+    private static final String UPDATED_IMAGE = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/avions";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -86,7 +89,8 @@ class AvionResourceIT {
             .place(DEFAULT_PLACE)
             .autonomie(DEFAULT_AUTONOMIE)
             .usage(DEFAULT_USAGE)
-            .heures(DEFAULT_HEURES);
+            .heures(DEFAULT_HEURES)
+            .image(DEFAULT_IMAGE);
         return avion;
     }
 
@@ -105,7 +109,8 @@ class AvionResourceIT {
             .place(UPDATED_PLACE)
             .autonomie(UPDATED_AUTONOMIE)
             .usage(UPDATED_USAGE)
-            .heures(UPDATED_HEURES);
+            .heures(UPDATED_HEURES)
+            .image(UPDATED_IMAGE);
         return avion;
     }
 
@@ -135,6 +140,7 @@ class AvionResourceIT {
         assertThat(testAvion.getAutonomie()).isEqualTo(DEFAULT_AUTONOMIE);
         assertThat(testAvion.getUsage()).isEqualTo(DEFAULT_USAGE);
         assertThat(testAvion.getHeures()).isEqualTo(DEFAULT_HEURES);
+        assertThat(testAvion.getImage()).isEqualTo(DEFAULT_IMAGE);
     }
 
     @Test
@@ -191,7 +197,8 @@ class AvionResourceIT {
             .andExpect(jsonPath("$.[*].place").value(hasItem(DEFAULT_PLACE)))
             .andExpect(jsonPath("$.[*].autonomie").value(hasItem(DEFAULT_AUTONOMIE.toString())))
             .andExpect(jsonPath("$.[*].usage").value(hasItem(DEFAULT_USAGE)))
-            .andExpect(jsonPath("$.[*].heures").value(hasItem(DEFAULT_HEURES.toString())));
+            .andExpect(jsonPath("$.[*].heures").value(hasItem(DEFAULT_HEURES.toString())))
+            .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE)));
     }
 
     @Test
@@ -213,7 +220,8 @@ class AvionResourceIT {
             .andExpect(jsonPath("$.place").value(DEFAULT_PLACE))
             .andExpect(jsonPath("$.autonomie").value(DEFAULT_AUTONOMIE.toString()))
             .andExpect(jsonPath("$.usage").value(DEFAULT_USAGE))
-            .andExpect(jsonPath("$.heures").value(DEFAULT_HEURES.toString()));
+            .andExpect(jsonPath("$.heures").value(DEFAULT_HEURES.toString()))
+            .andExpect(jsonPath("$.image").value(DEFAULT_IMAGE));
     }
 
     @Test
@@ -243,7 +251,8 @@ class AvionResourceIT {
             .place(UPDATED_PLACE)
             .autonomie(UPDATED_AUTONOMIE)
             .usage(UPDATED_USAGE)
-            .heures(UPDATED_HEURES);
+            .heures(UPDATED_HEURES)
+            .image(UPDATED_IMAGE);
 
         restAvionMockMvc
             .perform(
@@ -265,6 +274,7 @@ class AvionResourceIT {
         assertThat(testAvion.getAutonomie()).isEqualTo(UPDATED_AUTONOMIE);
         assertThat(testAvion.getUsage()).isEqualTo(UPDATED_USAGE);
         assertThat(testAvion.getHeures()).isEqualTo(UPDATED_HEURES);
+        assertThat(testAvion.getImage()).isEqualTo(UPDATED_IMAGE);
     }
 
     @Test
@@ -357,6 +367,7 @@ class AvionResourceIT {
         assertThat(testAvion.getAutonomie()).isEqualTo(UPDATED_AUTONOMIE);
         assertThat(testAvion.getUsage()).isEqualTo(UPDATED_USAGE);
         assertThat(testAvion.getHeures()).isEqualTo(DEFAULT_HEURES);
+        assertThat(testAvion.getImage()).isEqualTo(DEFAULT_IMAGE);
     }
 
     @Test
@@ -379,7 +390,8 @@ class AvionResourceIT {
             .place(UPDATED_PLACE)
             .autonomie(UPDATED_AUTONOMIE)
             .usage(UPDATED_USAGE)
-            .heures(UPDATED_HEURES);
+            .heures(UPDATED_HEURES)
+            .image(UPDATED_IMAGE);
 
         restAvionMockMvc
             .perform(
@@ -401,6 +413,7 @@ class AvionResourceIT {
         assertThat(testAvion.getAutonomie()).isEqualTo(UPDATED_AUTONOMIE);
         assertThat(testAvion.getUsage()).isEqualTo(UPDATED_USAGE);
         assertThat(testAvion.getHeures()).isEqualTo(UPDATED_HEURES);
+        assertThat(testAvion.getImage()).isEqualTo(UPDATED_IMAGE);
     }
 
     @Test

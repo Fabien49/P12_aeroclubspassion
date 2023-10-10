@@ -8,7 +8,7 @@ entity Aeroclub {
     adresse String required
     codePostal String required
     commune String required
-    
+
 }
 
 entity Tarif {
@@ -26,11 +26,12 @@ entity Avion {
     autonomie Duration
     usage String
     heures Duration
+    image String
 }
 
 entity Reservation {
 	dateEmprunt ZonedDateTime
-    dateRetour ZonedDateTime    
+    dateRetour ZonedDateTime
 }
 
 entity Revision {

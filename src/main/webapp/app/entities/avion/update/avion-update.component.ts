@@ -29,6 +29,7 @@ export class AvionUpdateComponent implements OnInit {
     autonomie: [],
     usage: [],
     heures: [],
+    image: [],
     aeroclub: [],
   });
 
@@ -95,6 +96,7 @@ export class AvionUpdateComponent implements OnInit {
       autonomie: avion.autonomie,
       usage: avion.usage,
       heures: avion.heures,
+      image: avion.image,
       aeroclub: avion.aeroclub,
     });
 
@@ -125,6 +127,7 @@ export class AvionUpdateComponent implements OnInit {
       autonomie: this.editForm.get(['autonomie'])!.value,
       usage: this.editForm.get(['usage'])!.value,
       heures: this.editForm.get(['heures'])!.value,
+      image: this.editForm.get(['image'])!.value,
       aeroclub: this.editForm.get(['aeroclub'])!.value,
     };
   }

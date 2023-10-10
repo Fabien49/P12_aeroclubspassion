@@ -10,6 +10,7 @@ export interface IAvion {
   autonomie?: string | null;
   usage?: string | null;
   heures?: string | null;
+  image?: string | null;
   aeroclub?: IAeroclub | null;
 }
 
@@ -24,6 +25,7 @@ export class Avion implements IAvion {
     public autonomie?: string | null,
     public usage?: string | null,
     public heures?: string | null,
+    public image?: string | null,
     public aeroclub?: IAeroclub | null
   ) {}
 }

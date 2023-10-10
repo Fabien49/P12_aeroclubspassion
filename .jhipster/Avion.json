@@ -33,6 +33,10 @@
     {
       "fieldName": "heures",
       "fieldType": "Duration"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "String"
     }
   ],
   "relationships": [
