@@ -6,6 +6,7 @@ import { IAvion } from '../avion.model';
 @Component({
   selector: 'jhi-avion-detail',
   templateUrl: './avion-detail.component.html',
+  styleUrls: ['./avion-detail.component.scss'],
 })
 export class AvionDetailComponent implements OnInit {
   avion: IAvion | null = null;

@@ -12,6 +12,7 @@ import { Account } from 'app/core/auth/account.model';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  isHomeCollapsed = true;
   account: Account | null = null;
 
   private readonly destroy$ = new Subject<void>();
@@ -32,5 +33,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  collapseHome() {
+    this.isHomeCollapsed=true;
   }
 }
