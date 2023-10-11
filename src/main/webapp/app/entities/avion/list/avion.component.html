@@ -1,3 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="border-secondary shadow bg-info text-white jumbotron">
+        <h1>Mes avions</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div *ngFor="let avion of avions; trackBy: trackId" class="col-12 my-4 col-lg-4">
+      <div class="border-secondary shadow card h-100">
+        <img class="card-img-top" src="#" alt="mes_avions" height="250">
+        <div class="card-body">
+          <h5 class="card-title" ></h5>
+          <table class="table table-border">
+            <tr>
+              <td class="text-left">Modèle</td>
+              <td>{{ avion.marque }}</td>
+            </tr>
+            <tr>
+              <td class="text-left">Nombre d'heures</td>
+              <td>{{ avion.heures | duration }}</td>
+            </tr>
+            <tr>
+              <td class="text-left">Nombre de places</td>
+              <td>{{ avion.place }}</td>
+            </tr>
+          </table>
+          <a [routerLink]="['/avion', avion.id, 'view']" class="stretched-link btn btn-secondary"
+             role="button">Plus de détails</a>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="avions && avions.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="row justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [(page)]="ngbPaginationPage"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="loadPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+<hr>
+
 <div>
   <h2 id="page-heading" data-cy="AvionHeading">
     <span jhiTranslate="aeroclubspassionApp.avion.home.title">Avions</span>

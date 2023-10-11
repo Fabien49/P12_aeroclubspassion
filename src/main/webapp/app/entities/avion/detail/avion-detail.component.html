@@ -1,3 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="border-secondary shadow card h-100 mt-3">
+        <div class="row">
+          <div class="col-12 my-4 col-lg-6">
+            <div class="border-secondary card h-100 ml-3" *ngIf="avion">
+              <img class="card-img-top" src="#"  alt="image_avion"
+                   height="430">
+            </div>
+          </div>
+          <div class="col-12 my-4 col-lg-6">
+            <div class="border-0 card h-100">
+              <div class="card-body">
+                <h4 class="card-title text-center">{{ avion?.marque }}</h4>
+                <hr>
+                <table class="table table-border">
+                  <div>
+                    <tr>
+                      <td class="text-left">Type</td>
+                      <td>{{ avion?.type }}</td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Moteur</td>
+                      <td>{{ avion?.moteur }}</td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Puissance</td>
+                      <td>{{ avion?.puissance }}</td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Place</td>
+                      <td>{{ avion?.place }}</td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Autonomie</td>
+                      <td>{{ avion?.autonomie }}</td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Usage</td>
+                      <td>{{ avion?.usage }}</td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">Nombre d'heures</td>
+                      <td>{{ avion?.heures }}</td>
+                    </tr>
+                  </div>
+
+
+                  <tr>
+                    <td>
+                      <a class="btn btn-success" >Editer / Certifier</a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--        <div class="row">
+                  <div class="col-12">
+                    <div class="border-0 card h-100">
+                      <div th:object="${sitePageEscalade}" class="card-body">
+                        <h5 class="card-title">Descritpion</h5>
+                        <p class="card-text"></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<hr>
+<hr>
+
 <div class="row justify-content-center">
   <div class="col-8">
     <div *ngIf="avion">
