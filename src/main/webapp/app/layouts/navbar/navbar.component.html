@@ -205,7 +205,12 @@
         <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu" data-cy="accountMenu">
           <span *ngIf="!account?.imageUrl">
             <fa-icon icon="user"></fa-icon>
-            <span jhiTranslate="global.menu.account.main">Account</span>
+<!--            <pan *ngIf="account">
+            <span jhiTranslate="global.menu.account.main">{{ account.login }}</span>
+            </pan>-->
+            <span *ngIf="account;then contenu_bon else contenu_pas_bon">Le contenu saisi ici sera ignoré.</span>
+            <span><ng-template #contenu_bon>{{ account?.login }}</ng-template></span>
+            <span><ng-template #contenu_pas_bon>Compte</ng-template></span>
           </span>
           <span *ngIf="account?.imageUrl">
             <img [src]="account!.imageUrl" class="profile-image rounded-circle" alt="Avatar" />
