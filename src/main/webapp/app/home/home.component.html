@@ -23,17 +23,21 @@
   <div class="row">
       <div th:if="${role == null}" class="col-12 my-4 col-lg-4">
           <div class="border-secondary shadow card h-60">
-              <img class="card-img-top" src="content/images/rechercherunaerodrome.png" alt="rechhercher_un_aerodrome" height="200">
-              <div class="card-body d-flex flex-column">
-                  <a class="stretched-link btn btn-info mt-auto" href="/inscription" role="button">Search one aerodrome</a>
-              </div>
+              <img class="card-img-top" src="content/images/rechercherunaerodrome.png" alt="rechercher_un_aerodrome" height="200">
+            <div class="card-body d-flex flex-column">
+              <a class="stretched-link btn btn-info mt-auto" routerLink="aeroclub" routerLinkActive="active"
+                 [routerLinkActiveOptions]="{ exact: true }"
+                 (click)="collapseHome()" role="button">Rechercher un aérodrome</a>
+            </div>
           </div>
       </div>
       <div th:if="${role == null}" class="col-12 my-4 col-lg-4">
           <div class="border-secondary shadow card h-60">
               <img class="card-img-top" src="content/images/monaerodrome.jpg" alt="mon_aérodrome" height="200">
               <div class="card-body d-flex flex-column">
-                  <a class="stretched-link btn btn-info mt-auto" href="/sites" role="button">Mon aérodrome</a>
+                  <a class="stretched-link btn btn-info mt-auto" routerLink="aeroclub" routerLinkActive="active"
+                     [routerLinkActiveOptions]="{ exact: true }"
+                     (click)="collapseHome()" role="button">Mon aérodrome</a>
               </div>
           </div>
       </div>
@@ -52,27 +56,33 @@
       <div th:if="${role}" class="col-12 my-4 col-lg-4">
           <div class="border-secondary shadow card h-60">
               <img class="card-img-top" src="content/images/reservation.png" alt="reservation " height="200">
-              <div class="card-body d-flex flex-column">
-                  <a class="stretched-link btn btn-info mt-auto" href="/topos" role="button">Réservations</a>
-              </div>
+            <div class="card-body d-flex flex-column">
+              <a class="stretched-link btn btn-info mt-auto" routerLink="reservation" routerLinkActive="active"
+                 [routerLinkActiveOptions]="{ exact: true }"
+                 (click)="collapseHome()" role="button">Réservations</a>
+            </div>
           </div>
       </div>
 
       <div th:if="${role}" class="col-12 my-4 col-lg-4">
         <div class="border-secondary shadow card h-60">
             <img class="card-img-top" src="content/images/maintenance.jpg" alt="maintenance" height="200">
-            <div class="card-body d-flex flex-column">
-                <a class="stretched-link btn btn-info mt-auto" href="/topos" role="button">Maintenance</a>
-            </div>
+          <div class="card-body d-flex flex-column">
+            <a class="stretched-link btn btn-info mt-auto" routerLink="revision" routerLinkActive="active"
+               [routerLinkActiveOptions]="{ exact: true }"
+               (click)="collapseHome()" role="button">Maintenance</a>
+          </div>
         </div>
     </div>
 
     <div th:if="${role}" class="col-12 my-4 col-lg-4">
       <div class="border-secondary shadow card h-60">
           <img class="card-img-top" src="content/images/atelier.jpg" alt="atelier" height="200">
-          <div class="card-body d-flex flex-column">
-              <a class="stretched-link btn btn-info mt-auto" href="/topos" role="button">Atelier</a>
-          </div>
+        <div class="card-body d-flex flex-column">
+          <a class="stretched-link btn btn-info mt-auto" routerLink="atelier" routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }"
+             (click)="collapseHome()" role="button">Atelier</a>
+        </div>
       </div>
   </div>
   </div>

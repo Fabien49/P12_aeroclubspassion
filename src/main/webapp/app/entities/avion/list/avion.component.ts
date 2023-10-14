@@ -13,6 +13,7 @@ import { AvionDeleteDialogComponent } from '../delete/avion-delete-dialog.compon
 @Component({
   selector: 'jhi-avion',
   templateUrl: './avion.component.html',
+  styleUrls: ['./avion.component.scss'],
 })
 export class AvionComponent implements OnInit {
   avions?: IAvion[];
