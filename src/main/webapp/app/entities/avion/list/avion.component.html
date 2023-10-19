@@ -31,8 +31,8 @@
         </div>
       </div>
     </div>
-
-    <div *ngIf="avions && avions.length > 0">
+  </div>
+      <div *ngIf="avions && avions.length > 0">
       <div class="row justify-content-center">
         <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
       </div>
@@ -49,7 +49,6 @@
         ></ngb-pagination>
       </div>
     </div>
-  </div>
 </div>
 
 <hr>
